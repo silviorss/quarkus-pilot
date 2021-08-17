@@ -32,8 +32,8 @@ public class ProdutoResource {
 	@Transactional
 	public void postProduto(ProdutoDTO dto) {
 		Produto p = new Produto();
-		p.nome = dto.nome;
-		p.valor = dto.valor;
+		p.setNome(dto.getNome());
+		p.setValor(dto.getValor());
 		p.persist();
 	}
 	
@@ -44,8 +44,8 @@ public class ProdutoResource {
 		Optional<Produto> produtoOpt = Produto.findByIdOptional(id);
 		if(produtoOpt.isPresent()) {
 			Produto produto = produtoOpt.get();
-			produto.nome = dto.nome;
-			produto.valor = dto.valor;
+			produto.setNome(dto.getNome());
+			produto.setValor(dto.getValor());
 			produto.persist();
 		} else {
 			throw new NotFoundException();
